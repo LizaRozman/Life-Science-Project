@@ -1,0 +1,3 @@
+html tutorial: https://www.w3schools.com/html/default.asp
+course repository: https://github.com/egonw/pils
+visual output of wikidata queries https://scholia.toolforge.org/
