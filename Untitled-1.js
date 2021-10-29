@@ -12,7 +12,7 @@
 <body>
   <pre id="output"></pre>
   <script>
-    query = "SELECT ?compound ?cas WHERE { ?compound wdt:P231 ?cas } LIMIT 10"
+    query = "SELECT ?compound ?cas WHERE { ?compound wdt:P231 ?cas } LIMIT 9"
     const url = wdk.sparqlQuery(query)
     async function main () {
       const response = await fetch(url)
