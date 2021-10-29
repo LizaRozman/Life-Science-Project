@@ -8,6 +8,7 @@
   <script src="https://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikidata-sdk.min.js"></script>
 </head>
 
+<!-- Comment -->
 <body>
   <pre id="output"></pre>
   <script>
