@@ -1,0 +1,34 @@
+PREFIX foo: <...>
+PREFIX bar: <...>
+
+<!-- Query result clause, can match one or multiple variables -->
+SELECT ?... ?...
+<!-- alternatively, can have construct, ask or describe queries -->
+CONSTRUCT{
+?...
+}
+
+<!-- result either true or false-->
+ASK
+
+<!-- decribes resources matched by variable-->
+DESCRIBE ?...
+
+<!-- optional definition of dataset -->
+FROM <...>
+FROM NAMED <...>
+
+<!-- Query pattern -->
+WHERE{
+...
+}
+
+<!-- Query modifiers -->
+GROUP BY
+HAVING
+ORDER BY
+LIMIT
+OFFSET
+BINDINGS
+
+<!-- more at https://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf-->
