@@ -31,4 +31,4 @@ LIMIT
 OFFSET
 BINDINGS
 
-<!-- more at https://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf-->
+<!-- more at https://www.iro.umontreal.ca/~lapalme/ift6281/sparql-1_1-cheat-sheet.pdf and https://www.w3.org/TR/sparql11-query/-->
