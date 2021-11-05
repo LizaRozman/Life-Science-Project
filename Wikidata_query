@@ -1,0 +1,17 @@
+#disease - drug - genes - structures (onlybrain)
+SELECT ?diseaseLabel  ?treatLabel ?geneLabel ?structureLabel 
+WHERE 
+{
+  ?class wdt:P279 wd:Q12135.
+  ?disease wdt:P279 ?class.
+  ?disease wdt:P2176 ?treat.
+  ?disease wdt:P2293 ?gene.
+  
+  ?gene wdt:P5572 ?structure.
+  
+  VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}
+  
+  ?structure wdt:P31|wdt:P2791 ?regions.
+        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}
