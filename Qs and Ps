@@ -1,5 +1,9 @@
 Qs (objects):
 Q12135 - mental disorder
+Q181923 - ADHD
+Q131755 - bipolar
+Q4340209 - mental depression
+Q202387 - PTSD
 
 Ps (relations):
 P279 : 'subclass of' (to get all mental disorders - 2 queries)
