@@ -1,0 +1,89 @@
+
+
+
+    Treatments for PTSD (Q202387)
+
+query = 'SELECT ?treatlabel
+WHERE 
+{
+  wd:Q202387 wdt:P2176 ?treat.     
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+
+
+
+    Treatments for ADHD (Q181923)
+
+query = 'SELECT ?treatlabel
+WHERE 
+{
+  wd:Q181923 wdt:P2176 ?treat.        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+
+    Symptoms of PTSD
+
+
+query = 'SELECT ?symptLabel
+WHERE 
+{
+  wd:Q202387 wdt:P780 ?sympt.        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+      Symptoms for ADHD
+
+query = 'SELECT ?symptLabel
+WHERE 
+{
+  wd:Q181923 wdt:P780 ?sympt.        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+Genes for PTSD
+
+query = 'SELECT ?geneLabel
+WHERE 
+{
+  wd:Q202387 wdt:P5572 ?gene.        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+Genes for ADHD
+
+query = 'SELECT ?geneLabel
+WHERE 
+{
+  wd:Q181923 wdt:P5572 ?gene.        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+
+    Brain structures for PTSD
+
+query = 'SELECT ?structureLabel
+WHERE
+{
+  wd:Q202387 wdt:P2293 ?gene.
+  ?gene wdt:P5572 ?structure.
+  VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}
+  ?structure wdt:P31|wdt:P2791 ?regions.
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}
+GROUP BY ?structureLabel`
+
+    Brain structures for ADHD
+
+query = 'SELECT ?structureLabel
+WHERE
+{
+  wd:Q181923 wdt:P2293 ?gene.
+  ?gene wdt:P5572 ?structure.
+  VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}
+  ?structure wdt:P31|wdt:P2791 ?regions.
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}
+GROUP BY ?structureLabel`
