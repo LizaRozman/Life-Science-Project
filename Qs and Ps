@@ -1,0 +1,9 @@
+Qs (objects):
+Q12135 - mental disorder
+
+Ps (relations):
+P279 : 'subclass of' (to get all mental disorders - 2 queries)
+P2176: 'drug/therapy for treatmen' (disorder - treatment)
+P2293: genetic association (disorder - gene)
+P780 : symptoms and signs (disorder - symptoms)
+P5572: expressed in (gene - anatomical structure)
