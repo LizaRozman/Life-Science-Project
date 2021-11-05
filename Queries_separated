@@ -8,8 +8,8 @@ WHERE
 {
   wd:Q202387 wdt:P2176 ?treat.     
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
-
+}
+GROUP BY ?treatLabel`
 
 
 
@@ -20,7 +20,7 @@ WHERE
 {
   wd:Q181923 wdt:P2176 ?treat.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
+}GROUP BY ?treatLabel`
 
 
     Symptoms of PTSD
@@ -31,7 +31,7 @@ WHERE
 {
   wd:Q202387 wdt:P780 ?sympt.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
+}GROUP BY ?symptLabel`
 
       Symptoms for ADHD
 
@@ -40,7 +40,7 @@ WHERE
 {
   wd:Q181923 wdt:P780 ?sympt.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
+}GROUP BY ?symptLabel`
 
 Genes for PTSD
 
@@ -49,7 +49,7 @@ WHERE
 {
   wd:Q202387 wdt:P5572 ?gene.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
+}GROUP BY ?geneLabel`
 
 Genes for ADHD
 
@@ -58,7 +58,7 @@ WHERE
 {
   wd:Q181923 wdt:P5572 ?gene.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
+}GROUP BY ?geneLabel`
 
     Brain structures for PTSD
 
