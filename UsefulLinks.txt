@@ -7,3 +7,5 @@ js tutorial pages: https://www.w3schools.com/js
 collaborative google doc: https://docs.google.com/document/d/1JncVqoCHVo5e47JT6ETReIWb4QFJK3BgLs9cnVefHig/edit#
 html overview of operators: https://www.w3schools.com/tags/tag_span.asp
 some js library - something about plots https://d3js.org/
+
+Venn diagram library: https://github.com/benfred/venn.js
