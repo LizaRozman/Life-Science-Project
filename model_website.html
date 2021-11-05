@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Example</title>
+  <!-- Initialize a global WBK function -->
+  <script src="https://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikibase-sdk.min.js"></script>
+  <!-- Initialize a global wdk object using the WBK object -->
+  <script src="https://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikidata-sdk.min.js"></script>
+</head>
+
+<body style="background-color:lightgray;">
+  <pre id="output"></pre>
+  <script>
+    query = `#disease - drug - genes - structures (onlybrain)
+SELECT ?diseaseLabel  ?treatLabel ?geneLabel ?structureLabel 
+WHERE 
+{
+  ?class wdt:P279 wd:Q12135.
+  ?disease wdt:P279 ?class.
+  ?disease wdt:P2176 ?treat.
+  ?disease wdt:P2293 ?gene.
+  
+  ?gene wdt:P5572 ?structure.
+  
+  VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}
+  
+  ?structure wdt:P31|wdt:P2791 ?regions.
+        
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}`
+    const url = wdk.sparqlQuery(query)
+    async function main () {
+      const response = await fetch(url)
+      const results = await response.json()
+      const simpleResults = wdk.simplify.sparqlResults(results)
+
+function resultTemplate ()
+{
+
+}
+      document.getElementById('output').innerHTML =` 
+       <h1 style="font-family:verdana;text=align:center;"> Query Results </h1> 
+
+       ${simpleResults.map(function(result){
+
+        return `
+        <div class=result> 
+          <h2 style="font-family:verdana;"> Disease: ${result.diseaseLabel}</h2>
+            <p style="font-family:verdana;"> 
+              treatment: ${result.treatLabel}<br>
+              targer gene product: ${result.geneLabel}<br>
+              region: ${result.structureLabel}
+        </p></div>
+        `
+
+       }).join('')}
+      
+      `
+
+    }
+    main()
+  </script>
+</body>
+</html>
