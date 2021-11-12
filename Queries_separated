@@ -33,7 +33,7 @@ WHERE
 }
 GROUP BY ?treatLabel`
 
-const url = wdk.sparqlQuery(PTSD_treat_query)
+var url = wdk.sparqlQuery(PTSD_treat_query)
 async function getPTSDtreat () 
   {
     const response = await fetch(url)
@@ -50,7 +50,7 @@ WHERE
   wd:Q181923 wdt:P2176 ?treat.        
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
 }GROUP BY ?treatLabel`
-const url = wdk.sparqlQuery(ADHD_treat_query)
+url = wdk.sparqlQuery(ADHD_treat_query)
 async function getADHDtreat () 
   {
     const response = await fetch(url)
@@ -67,7 +67,7 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
 }GROUP BY ?symptLabel`
 
-const url = wdk.sparqlQuery(PTSD_symp_query)
+url = wdk.sparqlQuery(PTSD_symp_query)
 async function getPTSDsymp () 
   {
     const response = await fetch(url)
@@ -85,7 +85,7 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
 }GROUP BY ?symptLabel`
 
-const url = wdk.sparqlQuery(ADHD_symp_query)
+url = wdk.sparqlQuery(ADHD_symp_query)
 async function getADHDsymp () 
   {
     const response = await fetch(url)
@@ -103,7 +103,7 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
 }GROUP BY ?geneLabel`
 
-const url = wdk.sparqlQuery(PTSD_genes_query)
+url = wdk.sparqlQuery(PTSD_genes_query)
 async function getPTSDgenes () 
   {
     const response = await fetch(url)
@@ -120,7 +120,7 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
 }GROUP BY ?geneLabel`
 
-const url = wdk.sparqlQuery(ADHD_genes_query)
+url = wdk.sparqlQuery(ADHD_genes_query)
 async function getADHDgenes () 
   {
     const response = await fetch(url)
@@ -142,7 +142,7 @@ WHERE
 }
 GROUP BY ?structureLabel`
 
-const url = wdk.sparqlQuery(PTSD_struc_query)
+url = wdk.sparqlQuery(PTSD_struc_query)
 async function getPTSDstruc () 
   {
     const response = await fetch(url)
@@ -165,7 +165,7 @@ WHERE
 }
 GROUP BY ?structureLabel`
 
-const url = wdk.sparqlQuery(ADHD_struc_query)
+url = wdk.sparqlQuery(ADHD_struc_query)
 async function getADHDstruc () 
   {
     const response = await fetch(url)
