@@ -2,21 +2,70 @@
 # should be integrated after query is run by clicking search button and before venn diagram production
 <script>
 
-function getData(var ){
+function getData(var disComp){
 
 #retrieve value of drop down menu
 
 var dis1name = document.getElementById("disease1").value, dis2name = document.getElementById("disease2").value
 
+#potential arrays to store data from query
+let data1 = new Array[], data2 = new Array[];
 
-for(var i = 0; i< data1.length; i++){
+#output arrays for Venn diagram
+let AB = new Array[], A = new Array[], B = new Array[];
+
+#dis1 a. dis2 are dummy variables, to be filled in once function to retrieve specific properties of query is done
+for(var i = 0; i< dis1.length; i++){
   for(var j = 0; j< data2.length; j++){
     if(data1[i] == data2[j]){
-      
+      AB.push(data2[j]);
     }
+    else{
+      B.push(data2[j]);
+    } 
   }
 }
 
+# construct string of items in arrays
+
+for(int n = 0; n < A.length; n++){
+
+} 
+
+var data = [
+        {
+          x: 'A',
+          value: 100,
+          name:dis1name,
+          tooltipTitle:,
+          normal: {fill: "#8ecafb 0.7"},
+          hovered: {fill: "#8ecafb 1"},
+          selected: {fill: "#8ecafb 1"}
+        },
+        {
+          x: 'B',
+          value: 100,
+          name: dis2name,
+          tooltipTitle: ,
+          normal: {fill: "#ffeaa6 0.7"},
+          hovered: {fill: "#ffeaa6 1"},
+          selected: {fill: "#ffeaa6 1"}
+        },
+        {
+          x: ['A', 'B'],
+          value: 20,
+          name: 'Overlap of' + disComp + 'of',
+          tooltipTitle: 'Possibility of disaster',
+          tooltipDesc: 'Keep a backup ready',
+          normal: {fill: "#9fdebe 0.8"},
+          hovered: {fill: "#9fdebe 1"},
+          selected: {fill: "#9fdebe 1"},
+          hatchFill: {
+            type:"weave",
+            color: "#83c3a3"
+          }    
+        }
+      ];
 
 }
 
