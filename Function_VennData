@@ -11,7 +11,8 @@ var dis1name = document.getElementById("disease1").value, dis2name = document.ge
 #output arrays for Venn diagram
 let AB = new Array[], A = new Array[], B = new Array[];
 
-#dis1 a. dis2 are dummy variables, to be filled in once function to retrieve specific properties of query is done
+# dis1 a. dis2 are dummy variables, to be filled in once function to retrieve specific properties of query is done
+# likely need module to retrieve needed data from query return json object
 let dis1 = , dis2 = ;
 
 #loops through data and checks if elements are identical, if true adds to AB array, if not adds to A/B respectively
