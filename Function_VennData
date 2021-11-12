@@ -1,0 +1,23 @@
+#purpose of function: retrieve data of querys, check for overlap a. assign to arrays for venn diagram
+# should be integrated after query is run by clicking search button and before venn diagram production
+<script>
+
+function getData(var ){
+
+#retrieve value of drop down menu
+
+var dis1name = document.getElementById("disease1").value, dis2name = document.getElementById("disease2").value
+
+
+for(var i = 0; i< data1.length; i++){
+  for(var j = 0; j< data2.length; j++){
+    if(data1[i] == data2[j]){
+      
+    }
+  }
+}
+
+
+}
+
+</script>
