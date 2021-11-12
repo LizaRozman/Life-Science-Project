@@ -46,6 +46,8 @@ for(int j = 0; j < AB.length; j++){
   contDiagAB += \j;
 } 
 
+# need additional module to compute relative size of circles
+
 #returns the json objects thats passed to the anychart.venn function
 return [
         {
