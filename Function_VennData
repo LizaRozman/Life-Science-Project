@@ -29,37 +29,49 @@ for(var i = 0; i< dis1.length; i++){
 # construct string of items in arrays
 
 for(int n = 0; n < A.length; n++){
-
+  contDiagA += A[n]; 
+  contDiagA += \n;
 } 
 
-var data = [
+for(int m = 0; m < B.length; m++){
+  contDiagB += B[m]; 
+  contDiagB += \m;
+} 
+
+for(int j = 0; j < AB.length; j++){
+  contDiagAB += AB[j]; 
+  contDiagAB += \j;
+} 
+
+#returns the json objects thats passed to the anychart.venn function
+return [
         {
           x: 'A',
           value: 100,
           name:dis1name,
-          tooltipTitle:,
+          tooltipTitle: contDiagA ,
           normal: {fill: "#8ecafb 0.7"},
           hovered: {fill: "#8ecafb 1"},
-          selected: {fill: "#8ecafb 1"}
+          selected: {fill: "#8ecafb 1.3"}
         },
         {
           x: 'B',
           value: 100,
           name: dis2name,
-          tooltipTitle: ,
+          tooltipTitle: contDiagB,
           normal: {fill: "#ffeaa6 0.7"},
           hovered: {fill: "#ffeaa6 1"},
-          selected: {fill: "#ffeaa6 1"}
+          selected: {fill: "#ffeaa6 1.3"}
         },
         {
           x: ['A', 'B'],
           value: 20,
-          name: 'Overlap of' + disComp + 'of',
-          tooltipTitle: 'Possibility of disaster',
-          tooltipDesc: 'Keep a backup ready',
+          name: 'Overlap between ' + dis1name + ' and ' + dis2name,
+          tooltipTitle: contDiagAB,
+          tooltipDesc: disComp + ' associated with both ' + dis1name + ' and ' + dis2name,
           normal: {fill: "#9fdebe 0.8"},
           hovered: {fill: "#9fdebe 1"},
-          selected: {fill: "#9fdebe 1"},
+          selected: {fill: "#9fdebe 1.3"},
           hatchFill: {
             type:"weave",
             color: "#83c3a3"
