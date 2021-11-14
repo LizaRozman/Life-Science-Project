@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Trial</title>
+	<!-- Initialize a global WBK function -->
+	<script src="http://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikibase-sdk.min.js"></script>
+	<!-- Initialize a global wdk object using the WBK object -->
+	<script src="http://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikidata-sdk.min.js"></script>
+	<!-- Include the scipt.js file in this html file -->
+	<script src="http://localhost:51238/queries.js"></script>
+</head>
+
+<body>
+	<pre id="output"></pre>
+	<script>
+		const disease = 'Q181923';
+		const q1 = Retrieve(GeneQuery(disease));
+	</script>
+</body>
+</html>
