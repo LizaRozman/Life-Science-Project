@@ -2,7 +2,7 @@
 layout: post
 title: Introduction
 subtitle: The Brain
-gh-repo: daattali/beautiful-jekyll
+gh-repo: LizaRozman/Life-Science-Project
 comments: false
 ---
 
