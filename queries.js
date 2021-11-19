@@ -23,16 +23,24 @@ async function GeneQuery(disease) {
 }
 
 async function StructQuery(disease) {
-    var struct_query = 'SELECT ?structureLabel WHERE {wd:' + disease + ' wdt:P2293 ?gene. ?gene wdt:P5572 ?structure. VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}. ?structure wdt:P31|wdt:P2791 ?regions. SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } } GROUP BY ?structureLabel ORDER BY ASC(?structureLabel)';
+    var struct_query = `SELECT ?itemLabel 
+WHERE {wd:' + disease + ' wdt:P2293 ?gene. ?gene wdt:P5572 ?structure.
+VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}.
+?structure wdt:P31|wdt:P2791 ?regions. SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } } GROUP BY ?structureLabel ORDER BY ASC(?structureLabel)`;
     var structures = await Retrieve(struct_query);
     console.log(structures); //only for debugging
     return structures;
 }
-
-async function Retrieve(query) {
+'async function Retrieve(query) {
     let url = wdk.sparqlQuery(query); //create wikidata URL based on the recieved query string 
     let response = await fetch(url); //retreives results of the query
     let results = await response.json();
-	var final = await wdk.simplify.sparqlResults(results); //simplifies object for easier handling
-    return final;
+    let final = await wdk.simplify.sparqlResults(results); //simplifies object for easier handling
+    console.log(final);
+    let items = Array();
+    for (let row in final){
+        items.push(row.itemLabel)
+};
+    
+    return items;
 }
