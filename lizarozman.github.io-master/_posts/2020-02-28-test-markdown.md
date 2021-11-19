@@ -13,5 +13,5 @@ comments: false
 ![Lateral view](https://github.com/LizaRozman/Life-Science-Project/blob/supplementary\_notes\_and_files/brain1.jpg?raw=true)
 
 
-![Medial View](https://github.com/LizaRozman/Life-Science-Project/blob/supplementary\_notes\_and_files/brain-medial-lazy.png?raw=true){
+![Medial View](https://github.com/LizaRozman/Life-Science-Project/blob/supplementary\_notes\_and_files/brain-medial-lazy.png?raw=true)
 
