@@ -1,60 +1,69 @@
-#purpose of function: retrieve data of querys, check for overlap a. assign to json objects for venn diagram
-# should be integrated after query is run by clicking search button and before venn diagram production
-<script>
+//purpose of function: retrieve data of querys, check for overlap a. assign to json objects for venn diagram
+//should be integrated after query is run by clicking search button and before venn diagram production
+// disComp = name of query function for specific component
 
-function getData(var disComp){
+function getData(disComp){
 
-#retrieve value of drop down menu
+//retrieve value of drop down menu
 
 var dis1name = document.getElementById("disease1").value, dis2name = document.getElementById("disease2").value
 
-#output arrays for Venn diagram
-let AB = new Array[], A = new Array[], B = new Array[];
+//output arrays for Venn diagram
+let AB = new Array[any], A = new Array[any], B = new Array[any];
 
-# dis1 a. dis2 are dummy variables, to be filled in once function to retrieve specific properties of query is done
-# likely need module to retrieve needed data from query return json object
-let dis1 = , dis2 = ;
+// dis1 a. dis2 are dummy variables, to be filled in once function to retrieve specific properties of query is done
+// likely need module to retrieve needed data from query return json object
 
-#loops through data and checks if elements are identical, if true adds to AB array, if not adds to A/B respectively
-for(var i = 0; i< dis1.length; i++){
-  for(var j = 0; j< dis2.length; j++){
+// calls retrieve function from query file, need to adjust to final names
+let dis1 = query.disComp(dis1name), dis2 = query.disComp(dis2name);
+
+// loops through data and checks if elements are identical, if true adds to AB array, if not adds to A/B respectively
+for(var i in dis1){
+  for(var j in dis2){
     if(dis1[i] == dis2[j]){
       AB.push(dis2[j]);
     }
     else{
-      B.push(dis2[j]);
+        if(!(B.includes(dis2[j]))){
+            B.push(dis2[j]);
+        }
     } 
   }
-  if(!(AB.includes(dis1[i])){
+  if(!(AB.includes(dis1[i]) && A.includes(dis1[i]))){
     A.push(dis1[i]);
-  }
+}
 }
 
-# construct string of items in arrays
+// construct string of items in arrays
 
-for(int n = 0; n < A.length; n++){
+for(var n in A){
   contDiagA += A[n]; 
-  contDiagA += \n;
+  contDiagA += '\n';
 } 
 
-for(int m = 0; m < B.length; m++){
+for(var m in B){
   contDiagB += B[m]; 
-  contDiagB += \m;
+  contDiagB += '\n';
 } 
 
-for(int j = 0; j < AB.length; j++){
+for(var j = 0; j < AB.length; j++){
   contDiagAB += AB[j]; 
-  contDiagAB += \j;
+  contDiagAB += '\n';
 } 
 
-# need additional module to compute relative size of circles
+// computes relative size of the diagram parts
+let AB_total = A.length + B.length + AB.length;
+let A_size = Math.ceil(A.length/AB_total/10)*1000;
+let B_size = Math.ceil(B.length/AB_total/10)*1000;
+let AB_size = Math.ceil(AB.length/AB_total/10)*1000;
 
-#returns the json objects thats passed to the anychart.venn function
+
+// returns the json objects thats passed to the anychart.venn function
 return [
         {
           x: 'A',
-          value: 100,
-          name:dis1name,
+          value: A_size,
+          name: dis1name,
           tooltipTitle: contDiagA ,
           normal: {fill: "#8ecafb 0.7"},
           hovered: {fill: "#8ecafb 1"},
@@ -62,7 +71,7 @@ return [
         },
         {
           x: 'B',
-          value: 100,
+          value: B_size,
           name: dis2name,
           tooltipTitle: contDiagB,
           normal: {fill: "#ffeaa6 0.7"},
@@ -71,7 +80,7 @@ return [
         },
         {
           x: ['A', 'B'],
-          value: 20,
+          value: AB_size,
           name: 'Overlap between ' + dis1name + ' and ' + dis2name,
           tooltipTitle: contDiagAB,
           tooltipDesc: disComp + ' associated with both ' + dis1name + ' and ' + dis2name,
@@ -84,7 +93,5 @@ return [
           }    
         }
       ];
-
 }
 
-</script>
