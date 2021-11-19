@@ -7,11 +7,13 @@
   <!-- Initialize a global wdk object using the WBK object -->
   <script src="https://cdn.rawgit.com/maxlath/wikidata-sdk/dist/dist/wikidata-sdk.min.js"></script>
   <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
+  <script src="queries.js"></script>
+  <script src="Function_VennData.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet">
 
-      <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
-       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet">
     <style type="text/css">
       html,
       body,
@@ -46,48 +48,28 @@
         <option value="Q131755"> Bipolar Disorder</option>
         <option value="Q202387"> PTSD</option>
        </select>
+      <select id="comparison" name="Comparison">
+          <option value="symp"> Symptoms</option>
+          <option value="treat"> Treatments </option>
+          <option value="gene"> Genes</option>
+          <option value="struct"> Brain structures</option>
+      </select>
     </form>
     <button id="searchButton" type="button" name="button">Search</button>
   </div>
-
+<div id="container"></div>
 <!-- Return Query Script -->
   <script>
-    // Query entry Diseases and Structure
-    query = `# Diseases and Structure
-SELECT ?diseaseLabel ?structureLabel 
-WHERE 
-{
-  ?class wdt:P279 wd:Q12135.
-  ?disease wdt:P279 ?class.
-  
-  VALUES (?regions) {(wd:Q1620186) (wd:Q1073)}
-  
-  ?structure wdt:P31|wdt:P2791 ?regions.
-        
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
-}`
-    const url = wdk.sparqlQuery(query)
-    async function main () 
-    {
-      const response = await fetch(url)
-      const results = await response.json()
-      const simpleResults = wdk.simplify.sparqlResults(results)
-    }
+      document.getElementById('searchButton').onclick = function () {
+          
+          var dis1 = document.getElementById("disease1").value
+          var dis2 = document.getElementById("disease2").value
+          var comp = document.getElementById("comparison").value
 
-    main()
+          vennDiagram(dis1, dis2, comp);
+          //console.log(q1);
+          
+      }
   </script>
-
-
-<div id="container"></div>
-  
- <!--in the body-->
-<!-- Show Venn Diagram on Button Click-->
-<button onclick="vennDiagram()"> Show Diagram </button>  
-<!-- the "vennDiagram() needs to be named the same as the function that generates the diagram itself-->
-<div id="container"></div>
-  <script src="GenerateVennDiagram.js"></script>
-  <!--"GenerateVennDiagram.js" needs to have the same name as the file that has the code to generate the venn diagrams
-    by inserting line(currently 88) it would run the function that will output the visualization-->
-  
 </body>
 </html>

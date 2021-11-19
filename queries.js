@@ -6,7 +6,7 @@ async function TreatQuery(disease) {
                         GROUP BY ?itemLabel 
                         ORDER BY ASC(?itemLabel)`;
     var treatments = await Retrieve(treat_query);
-    console.log(treatments); //only for debugging
+    //console.log(treatments); //only for debugging
     return treatments;
 }
 
@@ -19,7 +19,7 @@ async function SymptQuery(disease) {
                         GROUP BY ?itemLabel 
                         ORDER BY ASC(?itemLabel)`;
     var symptoms = await Retrieve(sympt_query);
-    console.log(symptoms); //only for debugging
+   // console.log(symptoms); //only for debugging
     return symptoms;
 }
 
@@ -30,9 +30,9 @@ async function GeneQuery(disease) {
                         } 
                         GROUP BY ?itemLabel 
                         ORDER BY ASC(?itemLabel)`;
-    console.log(gene_query); //only for debugging
+    //console.log(gene_query); //only for debugging
     var genes = await Retrieve(gene_query);
-    console.log(genes); //only for debugging
+    //console.log(genes); //only for debugging
     return genes;
   
 }
@@ -49,7 +49,7 @@ async function StructQuery(disease) {
                         GROUP BY ?itemLabel 
                         ORDER BY ASC(?itemLabel)`;
     var structures = await Retrieve(struct_query);
-    console.log(structures); //only for debugging
+    //console.log(structures); //only for debugging
     return structures;
 }
 async function Retrieve(query) {
@@ -57,11 +57,10 @@ async function Retrieve(query) {
     let response = await fetch(url); //retreives results of the query
     let results = await response.json();
     let final = await wdk.simplify.sparqlResults(results); //simplifies object for easier handling
-    console.log(final);
+   // console.log(final);
     let items = Array();
     for (let row in final){
-        items.push(row.itemLabel)
-};
-    
+        items.push(final[row].itemLabel);
+    }
     return items;
 }
