@@ -29,7 +29,7 @@ async function GeneQuery(disease) {
                         SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } 
                         } 
                         GROUP BY ?itemLabel 
-                        ORDER BY ASC(?geneLabel)`;
+                        ORDER BY ASC(?itemLabel)`;
     console.log(gene_query); //only for debugging
     var genes = await Retrieve(gene_query);
     console.log(genes); //only for debugging
