@@ -18,6 +18,7 @@ let AB = new Array[any], A = new Array[any], B = new Array[any];
 let dis1 = query.disComp(dis1name), dis2 = query.disComp(dis2name);
 
 // loops through data and checks if elements are identical, if true adds to AB array, if not adds to A/B respectively
+// also checks if any component is doubled in the query
 for(var i in dis1){
   for(var j in dis2){
     if(dis1[i] == dis2[j]){
@@ -46,7 +47,7 @@ for(var m in B){
   contDiagB += '\n';
 } 
 
-for(var j = 0; j < AB.length; j++){
+for(var j in AB){
   contDiagAB += AB[j]; 
   contDiagAB += '\n';
 } 
