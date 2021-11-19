@@ -52,7 +52,7 @@ async function StructQuery(disease) {
     console.log(structures); //only for debugging
     return structures;
 }
-'async function Retrieve(query) {
+async function Retrieve(query) {
     let url = wdk.sparqlQuery(query); //create wikidata URL based on the recieved query string 
     let response = await fetch(url); //retreives results of the query
     let results = await response.json();
