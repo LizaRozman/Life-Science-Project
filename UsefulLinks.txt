@@ -5,6 +5,7 @@ js tutorial pages: https://www.w3schools.com/js
                    https://www.tutorialspoint.com/javascript
                    https://www.w3schools.com/js/js_json_intro.asp <-- JSON tutorial js
 collaborative google doc: https://docs.google.com/document/d/1JncVqoCHVo5e47JT6ETReIWb4QFJK3BgLs9cnVefHig/edit#
+presentation: https://1drv.ms/p/s!Avo2LQJrpwIht1IIH1rgaiUGaopH?e=qH7MGq
 html overview of operators: https://www.w3schools.com/tags/tag_span.asp
 some js library - something about plots https://d3js.org/
 
