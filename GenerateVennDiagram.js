@@ -1,48 +1,12 @@
 // Function that displays a Venn Diagram of the chosen features
 
-function vennDiagram() {
+function vennDiagram(disComp) {
       // set chart theme
       anychart.theme('pastel');
 
-/** FOR INGA: you can add the code here to get data from the queries 
-when you find a way to do that
-*/
-      var data = [
-        {
-          x: 'A',
-          value: 50,
-          name: 'DUMMY Disease 1',
-          tooltipTitle: 'TIME \n Can be quickly made',
-          normal: {fill: "#8ecafb 0.7"},
-          hovered: {fill: "#8ecafb 1"},
-          selected: {fill: "#8ecafb 1"}
-        },
-        {
-          x: 'B',
-          value: 100,
-          name: 'DUMMY Disease 2',
-          tooltipTitle: 'INGREDIENTS \n Key elements available',
-          normal: {fill: "#ffeaa6 0.7"},
-          hovered: {fill: "#ffeaa6 1"},
-          selected: {fill: "#ffeaa6 1"}
-        },
-        
-        {
-          x: ['A', 'B'],
-          value: 20,
-          name: 'DUMMY Overlap',
-          tooltipTitle: 'Possibility of disaster',
-          tooltipDesc: 'Keep a backup ready',
-          normal: {fill: "#9fdebe 0.8"},
-          hovered: {fill: "#9fdebe 1"},
-          selected: {fill: "#9fdebe 1"},
-          hatchFill: {
-            type:"weave",
-            color: "#83c3a3"
-          }    
-        },
-  
-      ];
+      // gets data from getData function
+      // might need to add path or smth 
+      var data = getData(disComp);
 
       // create venn diagram
       var chart = anychart.venn(data);
