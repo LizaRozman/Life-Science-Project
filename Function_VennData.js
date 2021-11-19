@@ -68,44 +68,38 @@ for(var j in AB){
   contDiagAB += '\n';
     }
 
-    console.log(contDiagA);
-    console.log(contDiagB);
-    console.log(contDiagAB);
-
 // computes relative size of the diagram parts
 var AB_total = A.length + B.length + AB.length;
 var A_size = parseInt(A.length/AB_total*100);
 var B_size = parseInt(B.length/AB_total*100);
 var AB_size =parseInt(AB.length/AB_total*100);
-    console.log(AB_size);
-    console.log(A_size);
-    console.log(B_size);
+
 
 // returns the json objects thats passed to the anychart.venn function
 return [
         {
           x: 'A',
-          value: 100,
+          value: A_size,
           name: dis1,
-          tooltipTitle: 'test',
+          tooltipTitle: contDiagA,
           normal: {fill: "#8ecafb 0.7"},
           hovered: {fill: "#8ecafb 1"},
           selected: {fill: "#8ecafb 1.3"}
         },
         {
           x: 'B',
-          value: 100,
+          value: B_size,
           name: dis2,
-            tooltipTitle: 'test',
+            tooltipTitle: contDiagB,
           normal: {fill: "#ffeaa6 0.7"},
           hovered: {fill: "#ffeaa6 1"},
           selected: {fill: "#ffeaa6 1.3"}
         },
         {
           x: ['A', 'B'],
-          value: 20,
+          value: AB_size,
           name: 'Overlap between ' + dis1 + ' and ' + dis2,
-          tooltipTitle: 'test',
+          tooltipTitle: contDiagAB,
           tooltipDesc: comp + ' associated with both ' + dis1 + ' and ' + dis2,
           normal: {fill: "#9fdebe 0.8"},
           hovered: {fill: "#9fdebe 1"},
@@ -125,7 +119,7 @@ async function vennDiagram(dis1, dis2, comp) {
     // gets data from getData function
     // might need to add path or smth 
     var data = await getData(dis1, dis2, comp);
-    console.log(data);
+
     // create venn diagram
     var chart = anychart.venn(data);
 
@@ -136,7 +130,7 @@ async function vennDiagram(dis1, dis2, comp) {
         .fontFamily('Roboto, sans-serif')
         .fontSize(24)
         .padding({ bottom: 30 })
-        .text('Overlap in brain region expression');
+        .text('Overlap in ' + comp + ' between ' + dis1 + ' and ' + dis2 ':');
 
     // set chart stroke
     chart.stroke('1 #fff');
