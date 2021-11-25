@@ -13,15 +13,19 @@ async function getData(dis1, dis2, comp) {
 
     // calls retrieve function from query file, need to adjust to final names
     if (comp == "treat") {
+        compName = "treatments";
         var results1 = await TreatQuery(dis1);
         var results2 = await TreatQuery(dis2);
     } else if (comp == "symp") {
+        compName = "symptoms";
         var results1 = await SymptQuery(dis1);
         var results2 = await SymptQuery(dis2);
     } else if (comp == "gene") {
+        compName = "genes";
         var results1 = await GeneQuery(dis1);
         var results2 = await GeneQuery(dis2);
     } else if (comp == "struct") {
+        compName = "brain structures";
         var results1 = await StructQuery(dis1);
         var results2 = await StructQuery(dis2);
     } else { alert('selected condition cannot be found') }
@@ -72,16 +76,26 @@ for(var j in AB){
 var AB_total = A.length + B.length + AB.length;
 var A_size = parseInt(A.length/AB_total*100);
 var B_size = parseInt(B.length/AB_total*100);
-var AB_size =parseInt(AB.length/AB_total*100);
+var AB_size = parseInt(AB.length/AB_total*100);
 
+// assigns name of disease to object from name hashmap
+// hardcoded for the moment
+let names = new Map();
+names.set("Q181923", "ADHD");
+names.set("Q4340209", "Mental Depression");
+names.set("Q131755", "Bipolar Disorder");
+names.set("Q202387", "PTSD");
+
+let dis1name = names.get(dis1);
+let dis2name = names.get(dis2);
 
 // returns the json objects thats passed to the anychart.venn function
 return [
         {
           x: 'A',
           value: A_size,
-          name: dis1,
-          tooltipTitle: contDiagA,
+          name: contDiagA,
+          tooltipTitle: dis1name,
           normal: {fill: "#8ecafb 0.7"},
           hovered: {fill: "#8ecafb 1"},
           selected: {fill: "#8ecafb 1.3"}
@@ -89,8 +103,8 @@ return [
         {
           x: 'B',
           value: B_size,
-          name: dis2,
-            tooltipTitle: contDiagB,
+          name: contDiagB,
+            tooltipTitle: dis2name,
           normal: {fill: "#ffeaa6 0.7"},
           hovered: {fill: "#ffeaa6 1"},
           selected: {fill: "#ffeaa6 1.3"}
@@ -98,9 +112,8 @@ return [
         {
           x: ['A', 'B'],
           value: AB_size,
-          name: 'Overlap between ' + dis1 + ' and ' + dis2,
-          tooltipTitle: contDiagAB,
-          tooltipDesc: comp + ' associated with both ' + dis1 + ' and ' + dis2,
+          name: contDiagAB,
+          tooltipTitle: compName + ' associated with both ' + dis1name + ' and ' + dis2name,
           normal: {fill: "#9fdebe 0.8"},
           hovered: {fill: "#9fdebe 1"},
           selected: {fill: "#9fdebe 1.3"},
@@ -113,6 +126,28 @@ return [
 }
 
 async function vennDiagram(dis1, dis2, comp) {
+    
+
+    // had to redefine all the variables in this method, bc setting it as global variable didnt work btw html and js
+    let names = new Map();
+    names.set("Q181923", "ADHD");
+    names.set("Q4340209", "Mental Depression");
+    names.set("Q131755", "Bipolar Disorder");
+    names.set("Q202387", "PTSD");
+
+    let dis1name = names.get(dis1);
+    let dis2name = names.get(dis2);
+
+    if (comp == "treat") {
+        compName = "treatments";
+    } else if (comp == "symp") {
+        compName = "symptoms";
+    } else if (comp == "gene") {
+        compName = "genes";
+    } else if (comp == "struct") {
+        compName = "brain structures";
+    } else { alert('selected condition cannot be found') }
+        
     // set chart theme
     anychart.theme('pastel');
 
@@ -130,8 +165,7 @@ async function vennDiagram(dis1, dis2, comp) {
         .fontFamily('Roboto, sans-serif')
         .fontSize(24)
         .padding({ bottom: 30 })
-        .text('Overlap in ' + comp + ' between ' + dis1 + ' and ' + dis2 + ':');
-
+        .text('Overlap in ' + compName + ' between ' + dis1name + ' and ' + dis2name + ':');
     // set chart stroke
     chart.stroke('1 #fff');
 
@@ -165,9 +199,8 @@ async function vennDiagram(dis1, dis2, comp) {
         .background().fill("#000 0.5");
 
     // set container id for the chart
-    chart.container('container');
+    chart.container("container");
 
     // initiate chart drawing
     chart.draw();
 };
-
